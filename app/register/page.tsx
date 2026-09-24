@@ -14,7 +14,7 @@ export default function RegisterPage() {
     email: "",
     password: "",
     name: "",
-    organizationId: "",
+    organizationName: "",
   });
   const [errors, setErrors] = useState<
     Partial<Record<keyof RegisterInput, string>>

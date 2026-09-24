@@ -1,12 +1,8 @@
 import { apiFetch } from './api';
 import type { AuthResponse, ApiSuccessResponse } from '../types';
+import type { RegisterInput } from './validation';
 
-export async function register(input: {
-    email: string;
-    password: string;
-    name: string;
-    organizationId: string;
-}) {
+export async function register(input: RegisterInput) {
     const res = await apiFetch<ApiSuccessResponse<AuthResponse>>('/auth/register', {
         method: 'POST',
         body: JSON.stringify(input),
@@ -21,7 +17,6 @@ export async function login(input: { email: string; password: string }) {
     });
     return res.data;
 }
-
 
 export function saveTokens(accessToken: string, refreshToken: string) {
     localStorage.setItem('accessToken', accessToken);
